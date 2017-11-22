@@ -1,5 +1,3 @@
-module ManageIQ
-  module GraphQL
-    VERSION = '0.1.0'
-  end
+module ManageIQ::GraphQL
+  VERSION = '0.1.0'
 end
