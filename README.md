@@ -18,6 +18,12 @@ Then execute:
 $ bundle install
 ```
 
+Finally, mount the engine's routes in ManageIQ's `config/routes.rb`:
+
+```ruby
+mount ManageIQ::GraphQL::Engine, :at => '/graphql'
+```
+
 ## Running the test suite
 
 ```ruby
