@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE.txt", "Rakefile", "README.md"]
 
   s.add_runtime_dependency "graphql", "~> 1.7"
+  s.add_runtime_dependency "graphiql-rails", "~> 1.4"
   s.add_runtime_dependency "rails", ">= 5.0", "< 5.1" # (In lieu of depending on ManageIQ core directly)
 
   s.add_development_dependency "rspec-rails", "~> 3.7"

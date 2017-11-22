@@ -18,6 +18,12 @@ Then execute:
 $ bundle install
 ```
 
+## Running the test suite
+
+```ruby
+$ bin/rspec
+```
+
 ## License
 
 The gem is available as open source under the terms of the [Apache-2.0 License](https://opensource.org/licenses/Apache-2.0).

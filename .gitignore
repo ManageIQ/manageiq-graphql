@@ -1,5 +1,8 @@
 .bundle/
-log/*.log
-pkg/
 Gemfile.lock
 bin/
+bundler.d/*
+log/*.log
+pkg/
+spec/examples.txt
+spec/manageiq
