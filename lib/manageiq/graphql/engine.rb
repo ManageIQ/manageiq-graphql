@@ -8,6 +8,10 @@ module ManageIQ
       end
 
       isolate_namespace ManageIQ::GraphQL
+
+      def vmdb_plugin?
+        true
+      end
     end
   end
 end
