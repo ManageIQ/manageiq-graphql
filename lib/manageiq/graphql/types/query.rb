@@ -7,6 +7,14 @@ module ManageIQ
       Query = ::GraphQL::ObjectType.define do
         name 'Query'
 
+        field :service, Service, "Look up a service by its ID" do
+          argument :id, types.ID
+
+          resolve -> (obj, args, ctx) {
+            ::Service.find(args[:id])
+          }
+        end
+
         field :services, !types[Types::Service], "List available services" do
           resolve -> (obj, args, ctx) {
             ::Service.all
