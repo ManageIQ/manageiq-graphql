@@ -8,7 +8,7 @@ module ManageIQ
 
         field :vms, !types[Types::Vm] do
           resolve -> (obj, args, ctx) {
-            ::ManageIQ::Vm.all
+            ::Vm.all
           }
         end
       end
