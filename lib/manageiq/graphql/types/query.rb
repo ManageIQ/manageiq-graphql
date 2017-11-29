@@ -6,7 +6,7 @@ module ManageIQ
       Query = ::GraphQL::ObjectType.define do
         name 'Query'
 
-        field :vms, !types[Types::Vm] do
+        field :vms, !types[Types::Vm], "List available virtual machines" do
           resolve -> (obj, args, ctx) {
             ::Vm.all
           }
