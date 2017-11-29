@@ -1,6 +1,8 @@
+require_dependency 'manageiq/graphql/application_controller'
+
 module ManageIQ
   module GraphQL
-    class ApplicationController < ActionController::API
+    class GraphQLController < ApplicationController
       def execute
         variables = ensure_hash(params[:variables])
         query = params[:query]
