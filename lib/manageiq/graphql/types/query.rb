@@ -21,6 +21,14 @@ module ManageIQ
           }
         end
 
+        field :vm, Vm, "Look up a virtual machine by its ID" do
+          argument :id, types.ID
+
+          resolve -> (obj, args, ctx) {
+            ::Vm.find(args[:id])
+          }
+        end
+
         field :vms, !types[Types::Vm], "List available virtual machines" do
           resolve -> (obj, args, ctx) {
             ::Vm.all
