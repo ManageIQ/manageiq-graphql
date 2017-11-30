@@ -24,6 +24,8 @@ module ManageIQ
         field :cloud, !types.Boolean
         field :raw_power_state, !types.String
         field :service, Service, "The service object associated with this virtual machine" do
+          preload :direct_services
+
           resolve ->(object, args, ctx) {
             object.service
           }
