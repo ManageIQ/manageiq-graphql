@@ -27,6 +27,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   Kernel.srand config.seed
 
+  config.use_transactional_fixtures = true
+
   config.include ManageIQ::GraphQL::Engine.routes.url_helpers, :type => :routing
 
   # arbitrary gems may also be filtered via:
