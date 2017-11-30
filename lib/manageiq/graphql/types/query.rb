@@ -16,7 +16,7 @@ module ManageIQ
           }
         end
 
-        field :services, !types[Types::Service], "List available services" do
+        field :services, !types[Service], "List available services" do
           resolve -> (obj, args, ctx) {
             ::Service.all
           }
@@ -36,7 +36,7 @@ module ManageIQ
           }
         end
 
-        field :vms, !types[Types::Vm], "List available virtual machines" do
+        field :vms, !types[Vm], "List available virtual machines" do
           resolve -> (obj, args, ctx) {
             ::Vm.all
           }
