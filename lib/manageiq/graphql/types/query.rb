@@ -1,4 +1,5 @@
 require 'manageiq/graphql/types/service'
+require 'manageiq/graphql/types/tag'
 require 'manageiq/graphql/types/vm'
 
 module ManageIQ
@@ -18,6 +19,12 @@ module ManageIQ
         field :services, !types[Types::Service], "List available services" do
           resolve -> (obj, args, ctx) {
             ::Service.all
+          }
+        end
+
+        field :tags, !types[Tag], "List available tags" do
+          resolve -> (obj, args, ctx) {
+            ::Tag.all
           }
         end
 
