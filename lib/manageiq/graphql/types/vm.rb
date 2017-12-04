@@ -30,6 +30,13 @@ module ManageIQ
             object.service
           }
         end
+        field :tags, types[Tag], "The tags associated with this virtual machine" do
+          preload :tags
+
+          resolve ->(object, args, ctx) {
+            object.tags
+          }
+        end
       end
     end
   end
