@@ -37,8 +37,14 @@ module ManageIQ
         end
 
         field :vms, !types[Vm], "List available virtual machines" do
+          argument :tags, types[types.String]
+
           resolve -> (obj, args, ctx) {
-            ::Vm.all
+            if args[:tags]
+              ::Vm.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
+            else
+              ::Vm.all
+            end
           }
         end
       end
