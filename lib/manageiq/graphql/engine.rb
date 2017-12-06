@@ -9,6 +9,8 @@ module ManageIQ
 
       isolate_namespace ManageIQ::GraphQL
 
+      config.autoload_paths << root.join("lib").expand_path
+
       def vmdb_plugin?
         true
       end
