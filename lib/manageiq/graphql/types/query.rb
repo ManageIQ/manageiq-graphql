@@ -17,8 +17,14 @@ module ManageIQ
         end
 
         field :services, !types[Service], "List available services" do
+          argument :tags, types[types.String]
+
           resolve -> (obj, args, ctx) {
-            ::Service.all
+            if args[:tags]
+              ::Service.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
+            else
+              ::Service.all
+            end
           }
         end
 
