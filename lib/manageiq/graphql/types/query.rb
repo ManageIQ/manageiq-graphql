@@ -1,4 +1,5 @@
 require 'manageiq/graphql/types/service'
+require 'manageiq/graphql/types/tag'
 require 'manageiq/graphql/types/vm'
 
 module ManageIQ
@@ -15,9 +16,21 @@ module ManageIQ
           }
         end
 
-        field :services, !types[Types::Service], "List available services" do
+        field :services, !types[Service], "List available services" do
+          argument :tags, types[types.String]
+
           resolve -> (obj, args, ctx) {
-            ::Service.all
+            if args[:tags]
+              ::Service.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
+            else
+              ::Service.all
+            end
+          }
+        end
+
+        field :tags, !types[Tag], "List available tags" do
+          resolve -> (obj, args, ctx) {
+            ::Tag.all
           }
         end
 
@@ -29,9 +42,15 @@ module ManageIQ
           }
         end
 
-        field :vms, !types[Types::Vm], "List available virtual machines" do
+        field :vms, !types[Vm], "List available virtual machines" do
+          argument :tags, types[types.String]
+
           resolve -> (obj, args, ctx) {
-            ::Vm.all
+            if args[:tags]
+              ::Vm.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
+            else
+              ::Vm.all
+            end
           }
         end
       end

@@ -1,9 +1,12 @@
+require 'manageiq/graphql/types/taggable'
+
 module ManageIQ
   module GraphQL
     module Types
       Service = ::GraphQL::ObjectType.define do
         name 'Service'
         description 'A Service is an item in a Service Catalog that can be requested.'
+        interfaces [Taggable]
 
         field :id, !types.ID, "The ID of the service"
         field :name, !types.String, "The name of the service"

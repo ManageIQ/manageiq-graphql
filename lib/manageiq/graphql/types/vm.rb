@@ -1,9 +1,12 @@
+require 'manageiq/graphql/types/taggable'
+
 module ManageIQ
   module GraphQL
     module Types
       Vm = ::GraphQL::ObjectType.define do
         name 'Vm'
         description 'A Virtual Machine is a software implementation of a system that functions similar to a physical machine. Virtual machines utilize the hardware infrastructure of a physical host, or a set of physical hosts, to provide a scalable and on-demand method of system provisioning.'
+        interfaces [Taggable]
 
         field :id, !types.ID, "The ID of the virtual machine"
         field :vendor, !types.String, "The virtual machine's vendor"
