@@ -1,3 +1,5 @@
+require 'manageiq/graphql/types/taggable'
+
 module ManageIQ
   module GraphQL
     module Types
