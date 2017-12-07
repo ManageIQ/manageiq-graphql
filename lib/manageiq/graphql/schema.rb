@@ -1,4 +1,5 @@
 require 'manageiq/graphql/types/query'
+require 'manageiq/graphql/types/mutation'
 
 module ManageIQ
   module GraphQL
@@ -9,6 +10,18 @@ module ManageIQ
       enable_preloading
 
       query Types::Query
+      mutation Types::Mutation
+
+      resolve_type ->(type, obj, ctx) {
+        # This is horrible. It's horrible because this is a PoC
+        # and it just needs to prove that one can resolve our AR models to
+        # GraphQL types. dealwithit.gif
+        if /Vm/ =~ obj.class.name
+          Types::Vm
+        elsif /Service/ =~ obj.class.name
+          Types::Service
+        end
+      }
     end
   end
 end
