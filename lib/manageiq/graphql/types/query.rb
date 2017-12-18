@@ -1,5 +1,6 @@
 require 'manageiq/graphql/types/service'
 require 'manageiq/graphql/types/tag'
+require 'manageiq/graphql/types/user'
 require 'manageiq/graphql/types/vm'
 
 module ManageIQ
@@ -31,6 +32,12 @@ module ManageIQ
         field :tags, !types[Tag], "List available tags" do
           resolve -> (obj, args, ctx) {
             ::Tag.all
+          }
+        end
+
+        field :viewer, User, "The currently logged-in user" do
+          resolve -> (obj, args, ctx) {
+            ctx[:current_user]
           }
         end
 
