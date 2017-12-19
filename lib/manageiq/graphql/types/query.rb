@@ -13,7 +13,8 @@ module ManageIQ
           argument :id, types.ID
 
           resolve -> (obj, args, ctx) {
-            ::Service.find(args[:id])
+            service = ::Service.find(args[:id])
+            ::Rbac.filtered_object(service)
           }
         end
 
@@ -21,17 +22,18 @@ module ManageIQ
           argument :tags, types[types.String]
 
           resolve -> (obj, args, ctx) {
-            if args[:tags]
-              ::Service.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
-            else
-              ::Service.all
-            end
+            services = if args[:tags]
+                         ::Service.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
+                       else
+                         ::Service.all
+                       end
+            ::Rbac.filtered(services)
           }
         end
 
         field :tags, !types[Tag], "List available tags" do
           resolve -> (obj, args, ctx) {
-            ::Tag.all
+            ::Rbac.filtered(::Tag.all)
           }
         end
 
@@ -45,7 +47,8 @@ module ManageIQ
           argument :id, types.ID
 
           resolve -> (obj, args, ctx) {
-            ::Vm.find(args[:id])
+            vm = ::Vm.find(args[:id])
+            ::Rbac.filtered_object(vm)
           }
         end
 
@@ -53,11 +56,12 @@ module ManageIQ
           argument :tags, types[types.String]
 
           resolve -> (obj, args, ctx) {
-            if args[:tags]
-              ::Vm.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
-            else
-              ::Vm.all
-            end
+            vms = if args[:tags]
+                    ::Vm.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
+                  else
+                    ::Vm.all
+                  end
+            ::Rbac.filtered(vms)
           }
         end
       end
