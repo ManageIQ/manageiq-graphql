@@ -12,8 +12,8 @@ module ManageIQ
         field :vendor, !types.String, "The virtual machine's vendor"
         field :name, !types.String, "The name of the virtual machine"
         field :location, !types.String, "The location of the virtual machine"
-        field :created_at, !types.String
-        field :updated_at, !types.String
+        field :created_on, !types.String
+        field :updated_on, !types.String
         field :guid, !types.ID, "The globally unique identifier of the virtual machine"
         field :uid_ems, !types.ID
         field :boot_time, !types.String
