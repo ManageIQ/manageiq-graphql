@@ -12,20 +12,19 @@ module ManageIQ
         field :vendor, !types.String, "The virtual machine's vendor"
         field :name, !types.String, "The name of the virtual machine"
         field :location, !types.String, "The location of the virtual machine"
-        field :created_on, !types.String
-        field :updated_on, !types.String
+        field :created_on, !types.String, "The timestamp of when the virtual machine was created in the VMDB"
+        field :updated_on, !types.String, "The timestamp of when the virtual machine was last updated in the VMDB"
         field :guid, !types.ID, "The globally unique identifier of the virtual machine"
-        field :uid_ems, !types.ID
-        field :boot_time, !types.String
-        field :power_state, !types.String
-        field :state_changed_on, !types.String
-        field :previous_state, !types.String
+        field :uid_ems, !types.ID, "The unique identifier of the virtual machine across all possible instances for the same provider type"
+        field :boot_time, !types.String, "The timestamp of when the virtual machine was last powered on"
+        field :power_state, !types.String, "The power state of the virtual machine, normalized to one of: on; powering_up; powering_down; suspended; terminated; off"
+        field :state_changed_on, !types.String, "The timestamp of when the virtual machine last changed power state"
+        field :previous_state, !types.String, "The last power state of the virtual machine before changing to its current one"
         field :last_perf_capture_on, !types.String, "The timestamp of when the last metrics collection occurred for this virtual machine"
-        field :template, !types.Boolean
-        field :type, !types.String
-        field :ems_ref, !types.ID
-        field :cloud, !types.Boolean
-        field :raw_power_state, !types.String
+        field :type, !types.String, "The type of the virtual machine"
+        field :ems_ref, !types.ID, "The unique identifier of the virtual machine frome the native provider"
+        field :cloud, !types.Boolean, "Returns true for cloud virtual machines, false for infrastructure virtual machines"
+        field :raw_power_state, !types.String, "The power state of the virtual machine, as described by the provider"
         field :service, Service, "The service object associated with this virtual machine" do
           preload :direct_services
 
