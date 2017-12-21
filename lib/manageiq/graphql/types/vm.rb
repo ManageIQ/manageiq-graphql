@@ -21,7 +21,6 @@ module ManageIQ
         field :state_changed_on, !types.String
         field :previous_state, !types.String
         field :last_perf_capture_on, !types.String, "The timestamp of when the last metrics collection occurred for this virtual machine"
-        field :template, !types.Boolean
         field :type, !types.String
         field :ems_ref, !types.ID
         field :cloud, !types.Boolean
