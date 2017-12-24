@@ -14,13 +14,13 @@ module ManageIQ
         field :vmm_version, types.String
         field :vmm_product, types.String
         field :vmm_buildnumber, types.String
-        field :created_on, !types.String
-        field :updated_on, !types.String
+        field :created_on, !DateTime
+        field :updated_on, !DateTime
         field :guid, types.ID
         field :user_assigned_os, types.String
         field :power_state, types.String
         field :smart, types.Int
-        field :last_perf_capture_on, types.String
+        field :last_perf_capture_on, DateTime
         field :uid_ems, types.ID
         field :connection_state, types.String
         field :ssh_permit_root_login, types.String
