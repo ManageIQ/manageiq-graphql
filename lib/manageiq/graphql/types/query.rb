@@ -1,3 +1,4 @@
+require 'manageiq/graphql/types/host'
 require 'manageiq/graphql/types/service'
 require 'manageiq/graphql/types/tag'
 require 'manageiq/graphql/types/user'
@@ -8,6 +9,28 @@ module ManageIQ
     module Types
       Query = ::GraphQL::ObjectType.define do
         name 'Query'
+
+        field :host, Host, "Look up a host by its ID" do
+          argument :id, types.ID
+
+          resolve -> (obj, args, ctx) {
+            host = ::Host.find(args[:id])
+            ::Rbac.filtered_object(host)
+          }
+        end
+
+        field :hosts, !types[Host], "List available hosts" do
+          argument :tags, types[types.String]
+
+          resolve -> (obj, args, ctx) {
+            hosts = if args[:tags]
+                      ::Host.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
+                    else
+                      ::Host.all
+                    end
+            ::Rbac.filtered(hosts)
+          }
+        end
 
         field :service, Service, "Look up a service by its ID" do
           argument :id, types.ID
