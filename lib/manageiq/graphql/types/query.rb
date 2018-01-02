@@ -1,3 +1,4 @@
+require 'manageiq/graphql/types/date_time'
 require 'manageiq/graphql/types/host'
 require 'manageiq/graphql/types/service'
 require 'manageiq/graphql/types/tag'
