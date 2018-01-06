@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = ManageIQ::GraphQL::VERSION
   s.authors     = ["Chris Arcand"]
   s.email       = ["chris@chrisarcand.com"]
-  s.homepage    = "https://github.com/chrisarcand/manageiq-graphql"
+  s.homepage    = "https://github.com/manageiq/manageiq-graphql"
   s.summary     = "The GraphQL API for ManageIQ"
-  s.description = "This project includes the Rails engine powering the GraphQL API for ManageIQ - https://github.com/manageiq/manageiq"
+  s.description = "This project includes the Rails engine powering the GraphQL V2 API for ManageIQ - https://github.com/manageiq/manageiq"
   s.license     = "Apache-2.0"
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE.txt", "Rakefile", "README.md"]
