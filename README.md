@@ -1,15 +1,15 @@
 # ManageIQ::GraphQL
 
-**Note: This project is merely a proof of concept at this time**
+The [GraphQL](http://graphql.org/) V2 API for [ManageIQ](https://github.com/ManageIQ/manageiq)
 
-The GraphQL API v2 for ManageIQ
+**Note: This project is currently in early alpha**
 
 ## Installation
 
 Add the following to ManageIQ's Gemfile:
 
 ```ruby
-gem 'manageiq-graphql', git: "https://github.com/chrisarcand/manageiq-graphql"
+gem 'manageiq-graphql', :git => "https://github.com/manageiq/manageiq-graphql"
 ```
 
 Then execute:
