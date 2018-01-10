@@ -1,3 +1,5 @@
+require "rails_helper"
+
 RSpec.describe "GraphQL endpoint" do
   describe "#endpoint" do
     it "returns /graphql" do

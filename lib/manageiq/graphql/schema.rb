@@ -1,3 +1,6 @@
+require 'graphql'
+require 'graphql/batch'
+require 'graphql/preload'
 require 'manageiq/graphql/types/query'
 require 'manageiq/graphql/types/mutation'
 
