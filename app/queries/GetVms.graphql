@@ -1,5 +1,0 @@
-query GetVms {
-  vms {
-    name
-  }
-}

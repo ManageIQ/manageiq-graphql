@@ -18,10 +18,6 @@ module ManageIQ
         render json: result
       end
 
-      def queries
-        render json: { data: QueriesRepository.all.map { |q| serialize_query(q) } }
-      end
-
       private
 
       # Handle form data, JSON body, or a blank value
@@ -53,10 +49,6 @@ module ManageIQ
         else
           render :status => 401, :json => { :data => nil, :errors => [ { 'message' => 'Unauthorized' } ] }
         end
-      end
-
-      def serialize_query(query)
-        { operationName: query.selected_operation_name, query: query.query_string }
       end
     end
   end
