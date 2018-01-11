@@ -1,3 +1,8 @@
+if ENV['CI']
+  require 'simplecov'
+  SimpleCov.start
+end
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require "manageiq/graphql/schema"
