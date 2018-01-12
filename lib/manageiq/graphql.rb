@@ -1,7 +1,3 @@
-require 'graphql'
-require 'graphql/batch'
-require 'graphql/preload'
-
 require 'manageiq/graphql/version'
 
 # TODO Automate/move these internal deps
