@@ -1,3 +1,5 @@
+require 'rails'
+require 'action_controller/railtie'
 require 'manageiq/graphql/rest_api_proxy'
 
 module ManageIQ

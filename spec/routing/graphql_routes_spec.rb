@@ -1,4 +1,4 @@
-require "rails_helper"
+require "manageiq_helper"
 
 RSpec.describe "GraphQL endpoint" do
   describe "#endpoint" do
