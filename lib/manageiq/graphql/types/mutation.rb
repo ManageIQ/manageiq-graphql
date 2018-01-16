@@ -1,6 +1,3 @@
-require 'manageiq/graphql/types/vm_power_operation'
-require 'manageiq/graphql/types/action_result_payload'
-
 module ManageIQ
   module GraphQL
     module Types

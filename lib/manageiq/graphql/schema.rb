@@ -1,8 +1,6 @@
-require 'graphql'
-require 'graphql/batch'
-require 'graphql/preload'
-require 'manageiq/graphql/types/query'
-require 'manageiq/graphql/types/mutation'
+Pathname.glob(Pathname(__FILE__).dirname.join("types/**/*.rb")).each do |file|
+  require_dependency file
+end
 
 module ManageIQ
   module GraphQL

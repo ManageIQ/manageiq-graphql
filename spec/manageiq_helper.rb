@@ -17,8 +17,6 @@ RSpec.configure do |config|
   config.expose_dsl_globally = true
 
   config.include ManageIQ::GraphQL::Engine.routes.url_helpers, :type => :routing
-
-  config.include_context "integration test setup", :type => :request
 end
 
 # Load test helpers from ManageIQ

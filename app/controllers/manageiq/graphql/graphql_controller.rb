@@ -1,4 +1,5 @@
 require_dependency 'manageiq/graphql/application_controller'
+require_dependency 'manageiq/graphql/schema'
 
 module ManageIQ
   module GraphQL

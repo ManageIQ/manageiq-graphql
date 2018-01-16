@@ -1,10 +1,3 @@
-require 'manageiq/graphql/types/date_time'
-require 'manageiq/graphql/types/host'
-require 'manageiq/graphql/types/service'
-require 'manageiq/graphql/types/tag'
-require 'manageiq/graphql/types/user'
-require 'manageiq/graphql/types/vm'
-
 module ManageIQ
   module GraphQL
     module Types
