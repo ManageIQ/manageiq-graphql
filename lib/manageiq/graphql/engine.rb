@@ -13,6 +13,8 @@ module ManageIQ
 
       isolate_namespace ManageIQ::GraphQL
 
+      config.autoload_paths << root.join('lib')
+
       initializer "graphql.add_rest_proxy" do |app|
         app.middleware.use ManageIQ::GraphQL::RESTAPIProxy
       end
