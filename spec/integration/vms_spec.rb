@@ -1,4 +1,4 @@
-require "rails_helper"
+require "manageiq_helper"
 
 RSpec.describe "Vm queries" do
   describe "'vms' field" do
