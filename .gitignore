@@ -1,8 +1,16 @@
-.bundle/
-Gemfile.lock
-bin/
+.rubocop-*
+/.bundle/
+/.yardoc
+/Gemfile.lock
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+/bin/
+
+/spec/manageiq
+
+# ignore included plugins in bundler.d
 bundler.d/*
-log/*.log
-pkg/
-spec/examples.txt
-spec/manageiq
