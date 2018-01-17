@@ -5,7 +5,6 @@
 #
 
 # Load the ManageIQ environment
-ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path("../manageiq/config/environment", __FILE__)
 
 # Configure rspec-rails

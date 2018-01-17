@@ -9,6 +9,8 @@ if ENV['CI']
   SimpleCov.start
 end
 
+ENV['RAILS_ENV'] ||= 'test'
+
 RSpec.configure do |config|
 end
 
