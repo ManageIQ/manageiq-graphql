@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.authors     = ["ManageIQ Authors"]
   s.homepage    = "https://github.com/ManageIQ/manageiq-graphql"
   s.summary     = "The GraphQL API for ManageIQ"
-  s.description = "This project includes the Rails engine powering the GraphQL V2 API for ManageIQ - https://github.com/ManageIQ/manageiq"
+  s.description = "This project includes the Rails engine powering the GraphQL API for ManageIQ - https://github.com/ManageIQ/manageiq"
   s.license     = "Apache-2.0"
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE.txt", "Rakefile", "README.md"]

@@ -10,7 +10,7 @@
 [![Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ManageIQ/api?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Translate](https://img.shields.io/badge/translate-zanata-blue.svg)](https://translate.zanata.org/zanata/project/view/manageiq-graphql)
 
-The [GraphQL](http://graphql.org/) V2 API for [ManageIQ](https://github.com/ManageIQ/manageiq)
+The [GraphQL](http://graphql.org/) API for [ManageIQ](https://github.com/ManageIQ/manageiq)
 
 **Note: This project is currently in early alpha**
 
