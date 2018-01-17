@@ -15,7 +15,6 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE.txt", "Rakefile", "README.md"]
 
-  s.add_runtime_dependency "graphiql-rails", "~> 1.4"
   s.add_runtime_dependency "graphql", "~> 1.7"
   s.add_runtime_dependency "graphql-batch", "~> 0.3.8"
   s.add_runtime_dependency "graphql-preload", "~> 1.0"
