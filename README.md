@@ -6,8 +6,7 @@
 [![Test Coverage](https://codeclimate.com/github/ManageIQ/manageiq-graphql/badges/coverage.svg)](https://codeclimate.com/github/ManageIQ/manageiq-graphql/coverage)
 [![Dependency Status](https://gemnasium.com/ManageIQ/manageiq-graphql.svg)](https://gemnasium.com/ManageIQ/manageiq-graphql)
 [![Security](https://hakiri.io/github/ManageIQ/manageiq-graphql/master.svg)](https://hakiri.io/github/ManageIQ/manageiq-graphql/master)
-
-[![Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ManageIQ/api?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ManageIQ/api)
 [![Translate](https://img.shields.io/badge/translate-zanata-blue.svg)](https://translate.zanata.org/zanata/project/view/manageiq-graphql)
 
 The [GraphQL](http://graphql.org/) API for [ManageIQ](https://github.com/ManageIQ/manageiq)
@@ -16,28 +15,52 @@ The [GraphQL](http://graphql.org/) API for [ManageIQ](https://github.com/ManageI
 
 ## Installation
 
-Add the following to ManageIQ's Gemfile:
+This Rails engine is included with ManageIQ! No separate installation required.
 
-```ruby
-gem 'manageiq-graphql', :git => "https://github.com/manageiq/manageiq-graphql"
+## Contributing
+
+### Prerequisites
+
+It is assumed you have met all prerequisites for installing the ManageIQ app,
+as described [here](http://manageiq.org/docs/guides/developer_setup).
+
+### Setup
+
+First, fork/clone the project:
+
+```plaintext
+git clone git@github.com:username/manageiq-graphql.git
 ```
 
-Then execute:
+Next, run the setup script:
 
-```bash
-$ bundle install
+```plaintext
+$ cd manageiq-graphql
+$ bin/setup
 ```
 
-Finally, mount the engine's routes in ManageIQ's `config/routes.rb`:
+This should be sufficient to meet all development dependencies. During
+development, if you need to update the dependencies you can do so by running:
 
-```ruby
-mount ManageIQ::GraphQL::Engine, :at => '/graphql'
+```plaintext
+$ bin/update
 ```
 
-## Running the test suite
+For more details on developing ManageIQ plugins, please refer to the
+[ManageIQ Plugin Development guide](http://manageiq.org/docs/guides/developer_setup/plugins).
 
-```ruby
-$ bin/rspec
+### Running the test suite
+
+To run the entire test suite:
+
+```plaintext
+$ bundle exec rake spec
+```
+
+Individual files/tests can be run using the RSpec's normal executable:
+
+```plaintext
+$ bundle exec rspec spec/path/to/spec.rb:<optional line number>
 ```
 
 ## License
