@@ -19,8 +19,8 @@ RSpec.describe "authentication" do
       post(
         "/graphql",
         :headers => {"Authorization" => encode_credentials(user.userid, user.password) },
-        :params => {:query => "{ viewer { name } }"},
-        :as => :json
+        :params  => {:query => "{ viewer { name } }"},
+        :as      => :json
       )
 
       expected = {
@@ -37,12 +37,12 @@ RSpec.describe "authentication" do
       post(
         "/graphql",
         :headers => {"Authorization" => encode_credentials(user.userid, "hunter2") },
-        :params => {:query => "{ viewer { name } }"},
-        :as => :json
+        :params  => {:query => "{ viewer { name } }"},
+        :as      => :json
       )
 
       expected = {
-        "data" => nil,
+        "data"   => nil,
         "errors" => [
           {"message" => "Unauthorized"}
         ]
@@ -63,8 +63,8 @@ RSpec.describe "authentication" do
       post(
         "/graphql",
         :headers => {"HTTP_X_AUTH_TOKEN" => token},
-        :params => {:query => "{ viewer { name } }"},
-        :as => :json
+        :params  => {:query => "{ viewer { name } }"},
+        :as      => :json
       )
 
       expected = {
@@ -83,11 +83,11 @@ RSpec.describe "authentication" do
       post(
         "/graphql",
         :params => {:query => "{ viewer { name } }"},
-        :as => :json
+        :as     => :json
       )
 
       expected = {
-        "data" => nil,
+        "data"   => nil,
         "errors" => [
           {"message" => "Unauthorized"}
         ]

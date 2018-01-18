@@ -14,7 +14,7 @@ module ManageIQ
           argument :taggableType, !types.String
           argument :tagNames, !types[types.String]
 
-          resolve ->(object, args, ctx) {
+          resolve ->(_object, args, _ctx) {
             # WARNING: This isn't actually safe, it's merely for PoC
             klass = "::#{args[:taggableType]}".constantize
             taggable = klass.find(args[:taggableId])
@@ -29,7 +29,7 @@ module ManageIQ
           argument :taggableType, !types.String
           argument :tagNames, !types[types.String]
 
-          resolve ->(object, args, ctx) {
+          resolve ->(_object, args, _ctx) {
             # WARNING: This isn't actually safe, it's merely for PoC
             klass = "::#{args[:taggableType]}".constantize
             taggable = klass.find(args[:taggableId])
@@ -45,7 +45,7 @@ module ManageIQ
           argument :vm_id, !types.ID
           argument :operation, VmPowerOperation
 
-          resolve ->(object, args, ctx) {
+          resolve ->(_object, args, _ctx) {
             begin
               vm = ::Vm.find(args[:vm_id])
               vm = ::Rbac.filtered_object(vm)

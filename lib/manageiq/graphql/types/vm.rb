@@ -26,7 +26,7 @@ module ManageIQ
         field :service, Service, "The service object associated with this virtual machine" do
           preload :direct_services
 
-          resolve ->(object, args, ctx) {
+          resolve ->(object, _args, _ctx) {
             object.service
           }
         end

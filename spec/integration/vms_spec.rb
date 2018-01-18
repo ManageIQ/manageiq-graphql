@@ -21,7 +21,6 @@ RSpec.describe "Vm queries" do
         :headers => {"HTTP_X_AUTH_TOKEN" => token},
         :params  => {:query => "{ vms { name } }"},
         :as      => :json
-
       )
 
       expect(response.parsed_body).to eq("data" => {"vms" => [{"name" => "Alice's VM"}]})

@@ -24,7 +24,7 @@ module ManageIQ
       config.autoload_paths << root.join('lib').to_s
 
       initializer "graphql.add_rest_proxy" do |app|
-        app.middleware.use ManageIQ::GraphQL::RESTAPIProxy
+        app.middleware.use(ManageIQ::GraphQL::RESTAPIProxy)
       end
 
       def vmdb_plugin?
