@@ -1,6 +1,12 @@
 #!/usr/bin/env ruby
 require 'pathname'
 
+unless ENV['CI']
+  puts "Stopping Spring..."
+  system("#{Pathname(__dir__).join('spring')} stop")
+end
+ENV['DISABLE_SPRING'] = '1'
+
 gem_root = Pathname.new(__dir__).join("..")
 
 unless gem_root.join("spec/manageiq").exist?
