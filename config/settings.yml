@@ -1,0 +1,3 @@
+---
+:graphql_api:
+  :authentication_timeout: 30.seconds

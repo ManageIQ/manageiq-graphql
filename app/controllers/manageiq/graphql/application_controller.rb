@@ -23,7 +23,7 @@ module ManageIQ
             password,
             request,
             :require_user => true,
-            :timeout      => ::Settings.api.authentication_timeout.to_i_with_method
+            :timeout      => ::Settings.graphql_api.authentication_timeout.to_i_with_method
           )
         end
         User.current_user = @current_user
