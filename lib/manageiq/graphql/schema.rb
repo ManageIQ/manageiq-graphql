@@ -13,7 +13,7 @@ module ManageIQ
       query Types::Query
       mutation Types::Mutation
 
-      resolve_type ->(type, obj, ctx) {
+      resolve_type ->(_type, obj, _ctx) {
         # This is horrible. It's horrible because this is a PoC
         # and it just needs to prove that one can resolve our AR models to
         # GraphQL types. dealwithit.gif

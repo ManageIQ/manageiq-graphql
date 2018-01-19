@@ -6,7 +6,7 @@ module ManageIQ
         field :tags, types[Tag], "A list of tags assigned with this taggable" do
           preload :tags
 
-          resolve ->(object, args, ctx) {
+          resolve ->(object, _args, _ctx) {
             object.tags
           }
         end

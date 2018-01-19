@@ -12,7 +12,7 @@ module ManageIQ
       def authenticate!
         return if try_authenticate_with_http_basic || try_authenticate_with_http_token
         headers["WWW-Authenticate"] = 'Basic realm="Application"'
-        render :status => 401, :json => { :data => nil, :errors => [ { 'message' => 'Unauthorized' } ] }
+        render :status => 401, :json => { :data => nil, :errors => [{ 'message' => 'Unauthorized' }] }
       end
 
       def try_authenticate_with_http_basic

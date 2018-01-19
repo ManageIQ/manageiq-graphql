@@ -5,7 +5,7 @@ module ManageIQ
     # This is intended to allow this API to use the REST API as a temporary
     # crutch for things such as token authentication.
     class RESTAPIProxy
-      PROXY_PATHS= [
+      PROXY_PATHS = [
         'auth'
       ].freeze
 

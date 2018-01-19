@@ -1,3 +1,6 @@
 GlobalVars:
   AllowedVariables:
   - $api_log
+Style/Lambda:
+  Exclude:
+  - lib/manageiq/graphql/**/*
