@@ -51,9 +51,20 @@ module IntegrationMacros
 
     private
 
-    def indefinitize(word)
-      article = %w(a e i o u).include?(word[0].downcase) ? "an" : "a"
-      "#{article} #{word}"
+    A_REQUIRING_PATTERNS = /^(([bcdgjkpqtuvwyz]|onc?e|onearmed|onetime|ouija)$|e[uw]|uk|ubi|ubo|oaxaca|ufo|ur[aeiou]|use|ut([^t])|unani|uni(l[^l]|[a-ko-z]))/i
+    AN_REQUIRING_PATTERNS = /^([aefhilmnorsx]$|hono|honest|hour|heir|[aeiou]|8|11)/i
+    private_constant :A_REQUIRING_PATTERNS, :AN_REQUIRING_PATTERNS
+
+    def indefinitize(word_or_phrase)
+      first_word = word_or_phrase.to_s.split(/[- ]/).first
+      article = unless first_word.nil?
+                  if (first_word[AN_REQUIRING_PATTERNS]) && !(first_word[A_REQUIRING_PATTERNS])
+                    'an'
+                  else
+                    'a'
+                  end
+                end
+      "#{article} #{word_or_phrase}"
     end
   end
 
