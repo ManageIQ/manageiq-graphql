@@ -14,6 +14,5 @@ ENV['RAILS_ENV'] ||= 'test'
 RSpec.configure do |config|
 end
 
-Dir["./spec/support/**/*.rb"].each { |f| require f }
-
 require 'manageiq-graphql'
+Dir["./spec/support/**/*.rb"].each { |f| require f }
