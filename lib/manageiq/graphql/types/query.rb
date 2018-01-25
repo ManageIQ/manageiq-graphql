@@ -3,6 +3,7 @@ module ManageIQ
     module Types
       Query = ::GraphQL::ObjectType.define do
         name 'Query'
+        description 'The root type for a query operation; a read-only fetch.'
 
         field :host, Host, "Look up a host by its ID" do
           argument :id, types.ID

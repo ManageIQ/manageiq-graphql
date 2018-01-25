@@ -3,6 +3,7 @@ module ManageIQ
     module Types
       Mutation = ::GraphQL::ObjectType.define do
         name 'Mutation'
+        description 'The root type for a mutation operation; a write followed by fetch.'
 
         # Note: These are incredibly naive ways of doing a mutation.
         # Mutations should be implemented with object identification conforming
