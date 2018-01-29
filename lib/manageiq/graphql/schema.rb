@@ -15,10 +15,13 @@ module ManageIQ
 
       resolve_type ->(_type, obj, _ctx) {
         # TODO: This resolver is incredibly naive and should be refactored.
-        if /Vm/ =~ obj.class.name
+        case obj.class.name
+        when /Vm/
           Types::Vm
-        elsif /Service/ =~ obj.class.name
+        when /Service/
           Types::Service
+        when /Host/
+          Types::Host
         end
       }
 
