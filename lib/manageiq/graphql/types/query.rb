@@ -5,6 +5,9 @@ module ManageIQ
         name 'Query'
         description 'The root type for a query operation; a read-only fetch.'
 
+        field :node,  ::GraphQL::Relay::Node.field
+        field :nodes, ::GraphQL::Relay::Node.plural_field
+
         field :host, Host, "Look up a host by its ID" do
           argument :id, types.ID
 

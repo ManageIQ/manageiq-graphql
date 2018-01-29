@@ -6,7 +6,12 @@ module ManageIQ
         description "A computer on which virtual machine monitor software is loaded."
         interfaces [Taggable]
 
-        field :id, !types.ID, "The ID of the host"
+        global_id_field :id
+        field :database_id,
+              !types.ID,
+              "The database ID of the host",
+              :property           => :id,
+              :deprecation_reason => "This field may not be included in the ManageIQ Hammer release. Use the global Relay ID ('id') instead."
         field :name, !types.String, "The name of the host"
         field :hostname, types.String
         field :ipaddress, types.String
