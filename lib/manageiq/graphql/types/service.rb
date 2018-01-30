@@ -4,9 +4,15 @@ module ManageIQ
       Service = ::GraphQL::ObjectType.define do
         name 'Service'
         description 'A Service is an item in a Service Catalog that can be requested.'
+        implements ::GraphQL::Relay::Node.interface
         interfaces [Taggable]
 
-        field :id, !types.ID, "The ID of the service"
+        global_id_field :id
+        field :database_id,
+              !types.ID,
+              "The database ID of the service",
+              :property           => :id,
+              :deprecation_reason => "This field may not be included in the ManageIQ Hammer release. Use the global Relay ID ('id') instead."
         field :name, !types.String, "The name of the service"
         field :description, types.String, "A human-readable description of the service"
         field :guid, types.ID, "The globally unique identifier of the service"

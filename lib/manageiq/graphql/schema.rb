@@ -14,14 +14,34 @@ module ManageIQ
       mutation Types::Mutation
 
       resolve_type ->(_type, obj, _ctx) {
-        # This is horrible. It's horrible because this is a PoC
-        # and it just needs to prove that one can resolve our AR models to
-        # GraphQL types. dealwithit.gif
-        if /Vm/ =~ obj.class.name
+        # TODO: This resolver is incredibly naive and should be refactored.
+        case obj.class.name
+        when /Vm/
           Types::Vm
-        elsif /Service/ =~ obj.class.name
+        when /Service/
           Types::Service
+        when /Host/
+          Types::Host
         end
+      }
+
+      id_from_object ->(object, type_definition, _query_ctx) {
+        # Create UUIDs by joining the type name & ID, then base64-encoding it
+        ::GraphQL::Schema::UniqueWithinType.encode(type_definition.name, object.id)
+      }
+
+      object_from_id ->(id, _query_ctx) {
+        type_name, item_id = ::GraphQL::Schema::UniqueWithinType.decode(id)
+        # TODO: This resolver is incredibly naive and should be refactored.
+        model_klass = case type_name
+                      when /Vm/
+                        ::Vm
+                      when /Service/
+                        ::Service
+                      when /Host/
+                        ::Host
+                      end
+        model_klass.find(item_id)
       }
     end
   end

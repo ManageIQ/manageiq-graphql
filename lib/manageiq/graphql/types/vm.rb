@@ -4,9 +4,15 @@ module ManageIQ
       Vm = ::GraphQL::ObjectType.define do
         name 'Vm'
         description 'A Virtual Machine is a software implementation of a system that functions similar to a physical machine. Virtual machines utilize the hardware infrastructure of a physical host, or a set of physical hosts, to provide a scalable and on-demand method of system provisioning.'
+        implements ::GraphQL::Relay::Node.interface
         interfaces [Taggable]
 
-        field :id, !types.ID, "The ID of the virtual machine"
+        global_id_field :id
+        field :database_id,
+              !types.ID,
+              "The database ID of the virtual machine",
+              :property           => :id,
+              :deprecation_reason => "This field may not be included in the ManageIQ Hammer release. Use the global Relay ID ('id') instead."
         field :vendor, !types.String, "The virtual machine's vendor"
         field :name, !types.String, "The name of the virtual machine"
         field :location, !types.String, "The location of the virtual machine"

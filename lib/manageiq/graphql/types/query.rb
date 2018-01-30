@@ -5,14 +5,8 @@ module ManageIQ
         name 'Query'
         description 'The root type for a query operation; a read-only fetch.'
 
-        field :host, Host, "Look up a host by its ID" do
-          argument :id, types.ID
-
-          resolve ->(_obj, args, _ctx) {
-            host = ::Host.find(args[:id])
-            ::Rbac.filtered_object(host)
-          }
-        end
+        field :node,  ::GraphQL::Relay::Node.field
+        field :nodes, ::GraphQL::Relay::Node.plural_field
 
         field :hosts, !types[Host], "List available hosts" do
           argument :tags, types[types.String]
@@ -24,15 +18,6 @@ module ManageIQ
                       ::Host.all
                     end
             ::Rbac.filtered(hosts)
-          }
-        end
-
-        field :service, Service, "Look up a service by its ID" do
-          argument :id, types.ID
-
-          resolve ->(_obj, args, _ctx) {
-            service = ::Service.find(args[:id])
-            ::Rbac.filtered_object(service)
           }
         end
 
@@ -58,15 +43,6 @@ module ManageIQ
         field :viewer, User, "The currently logged-in user" do
           resolve ->(_obj, _args, ctx) {
             ctx[:current_user]
-          }
-        end
-
-        field :vm, Vm, "Look up a virtual machine by its ID" do
-          argument :id, types.ID
-
-          resolve ->(_obj, args, _ctx) {
-            vm = ::Vm.find(args[:id])
-            ::Rbac.filtered_object(vm)
           }
         end
 
