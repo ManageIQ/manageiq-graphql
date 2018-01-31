@@ -13,13 +13,13 @@ RSpec.describe "Relay specification compliance (integration)" do
           post(
             "/graphql",
             :headers => { "HTTP_X_AUTH_TOKEN" => token },
-            :params  => { :query => "{ vms { id name } }" },
+            :params  => { :query => "{ vms { edges { node { id name } } } }" },
             :as      => :json
           )
         end
 
         example "the same object can be requeried by its node ID" do
-          vm_id = response.parsed_body['data']['vms'].first['id']
+          vm_id = response.parsed_body.dig('data', 'vms', 'edges').first.dig('node', 'id')
 
           query = <<~QUERY
             {

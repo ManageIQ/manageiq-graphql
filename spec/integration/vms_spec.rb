@@ -14,11 +14,11 @@ RSpec.describe "Vm queries" do
         post(
           "/graphql",
           :headers => {"HTTP_X_AUTH_TOKEN" => token},
-          :params  => {:query => "{ vms { name } }"},
+          :params  => {:query => "{ vms { edges { node { name } } } }"},
           :as      => :json
         )
 
-        expect(response.parsed_body).to eq("data" => {"vms" => [{"name" => "Alice's VM"}]})
+        expect(response.parsed_body).to eq("data" => {"vms" => { "edges" => [{ "node" => {"name" => "Alice's VM"} }] } })
       end
     end
   end

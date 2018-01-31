@@ -44,7 +44,7 @@ module ManageIQ
         field :maintenance, types.Boolean
         field :maintenance_reason, types.String
 
-        field :vms, types[Vm], "The virtual machines associated with this host" do
+        connection :vms, !Vm.connection_type, "The virtual machines associated with this host" do
           preload :vms
         end
       end
