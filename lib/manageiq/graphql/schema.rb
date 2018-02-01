@@ -13,7 +13,7 @@ module ManageIQ
       query Types::Query
       mutation Types::Mutation
 
-      resolve_type ->(_type, obj, _ctx) {
+      resolve_type ->(_abstract_type, obj, _ctx) {
         # TODO: This resolver is incredibly naive and should be refactored.
         case obj.class.name
         when /Vm/

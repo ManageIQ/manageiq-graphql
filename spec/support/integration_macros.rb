@@ -72,6 +72,13 @@ module IntegrationMacros
     ActionController::HttpAuthentication::Basic.encode_credentials(user, password)
   end
 
+  ##
+  # Given an internal object (such as an ActiveRecord instance), returns the Relay ID for it
+  def relay_id_from(object)
+    type = ManageIQ::GraphQL::Schema.resolve_type(nil, object, nil)
+    ManageIQ::GraphQL::Schema.id_from_object(object, type, nil)
+  end
+
   private
 
   ##
