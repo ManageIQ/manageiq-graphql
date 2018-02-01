@@ -29,7 +29,8 @@ module ManageIQ
         field :ems_ref, types.ID, "The unique identifier of the virtual machine frome the native provider"
         field :cloud, types.Boolean, "Returns true for cloud virtual machines, false for infrastructure virtual machines"
         field :raw_power_state, types.String, "The power state of the virtual machine, as described by the provider"
-        field :service, Service, "The service object associated with this virtual machine" do
+
+        connection :service, !Service.connection_type, "The service object associated with this virtual machine" do
           preload :direct_services
 
           resolve ->(object, _args, _ctx) {

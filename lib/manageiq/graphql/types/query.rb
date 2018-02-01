@@ -8,7 +8,7 @@ module ManageIQ
         field :node,  ::GraphQL::Relay::Node.field
         field :nodes, ::GraphQL::Relay::Node.plural_field
 
-        field :hosts, !types[Host], "List available hosts" do
+        connection :hosts, !Host.connection_type, "List available hosts" do
           argument :tags, types[types.String]
 
           resolve ->(_obj, args, _ctx) {
@@ -21,7 +21,7 @@ module ManageIQ
           }
         end
 
-        field :services, !types[Service], "List available services" do
+        connection :services, !Service.connection_type, "List available services" do
           argument :tags, types[types.String]
 
           resolve ->(_obj, args, _ctx) {
@@ -34,7 +34,7 @@ module ManageIQ
           }
         end
 
-        field :tags, !types[Tag], "List available tags" do
+        connection :tags, !Tag.connection_type, "List available tags" do
           resolve ->(_obj, _args, _ctx) {
             ::Rbac.filtered(::Tag.all)
           }
@@ -46,7 +46,7 @@ module ManageIQ
           }
         end
 
-        field :vms, !types[Vm], "List available virtual machines" do
+        connection :vms, !Vm.connection_type, "List available virtual machines" do
           argument :tags, types[types.String]
 
           resolve ->(_obj, args, _ctx) {
