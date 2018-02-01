@@ -6,21 +6,7 @@ module ManageIQ
         description 'The root type for a mutation operation; a write followed by fetch.'
 
         field :addTags, :field => Mutations::AddTags.field
-
-        field :removeTags, Taggable do
-          description "Remove tags from a Taggable"
-          argument :taggableId, !types.ID
-          argument :taggableType, !types.String
-          argument :tagNames, !types[types.String]
-
-          resolve ->(_object, args, _ctx) {
-            # WARNING: This isn't actually safe, it's merely for PoC
-            klass = "::#{args[:taggableType]}".constantize
-            taggable = klass.find(args[:taggableId])
-            taggable.tag_remove(args[:tagNames])
-            taggable.reload
-          }
-        end
+        field :removeTags, :field => Mutations::RemoveTags.field
 
         # TODO: This is very PoC
         field :performVmPowerOperation, ActionResultPayload do
