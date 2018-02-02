@@ -1,4 +1,9 @@
 ---
+version: "2"  # required to adjust maintainability checks (https://docs.codeclimate.com/docs/advanced-configuration#section-default-checks)
+checks:
+  similar-code:
+    config:
+      threshold: 50
 exclude_paths:
 - ".git/"
 - "**.xml"
