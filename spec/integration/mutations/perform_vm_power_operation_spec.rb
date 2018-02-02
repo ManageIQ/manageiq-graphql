@@ -30,7 +30,7 @@ RSpec.describe 'performVmPowerOperation' do
 
       expected = {
         "success" => true,
-        "message" => a_string_including("Performing start operation"),
+        "message" => a_string_including("Performing start operation on VM id: #{relay_id_from(vm)}"),
         "taskId"  => "1337"
       }
 

@@ -15,16 +15,16 @@ module ManageIQ
             begin
               vm = Schema.object_from_id(args[:vmId], ctx)
               vm = ::Rbac.filtered_object(vm)
-              description = "Performing #{args[:operation]} operation on VM id: #{vm.id}, name: '#{vm.name}'"
+              description = lambda { |id| "Performing #{args[:operation]} operation on VM id: #{id}, name: '#{vm.name}'" }
 
               task_id = QueueService.enqueue(
                 vm,
-                description,
+                description.call(vm.id),
                 :method_name => args[:operation],
                 :role        => "ems_operations"
               )
 
-              { :success => true, :message => description, :taskId => task_id }
+              { :success => true, :message => description.call(args[:vmId]), :taskId => task_id }
             rescue StandardError => error
               { :success => false, :message => error.to_s }
             end
