@@ -1,8 +1,6 @@
 require "manageiq_helper"
 
 RSpec.describe 'performVmPowerOperation' do
-  let(:token_service) { Api::UserTokenService.new(:base => {:module => "api", :name => "API"}) }
-  let(:token) { token_service.generate_token(user.userid, "api") }
   let(:vm) { FactoryGirl.create(:vm) }
 
   as_user do
@@ -21,12 +19,7 @@ RSpec.describe 'performVmPowerOperation' do
     it "responds with a successful payload" do
       expect(ManageIQ::GraphQL::QueueService).to receive(:enqueue).and_return(1337)
 
-      post(
-        "/graphql",
-        :headers => { "HTTP_X_AUTH_TOKEN" => token },
-        :params  => { :query => query },
-        :as      => :json
-      )
+      execute_graphql(query)
 
       expected = {
         "success" => true,

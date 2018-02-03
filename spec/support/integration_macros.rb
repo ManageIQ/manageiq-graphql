@@ -68,6 +68,22 @@ module IntegrationMacros
     end
   end
 
+  def execute_graphql(graphql)
+    if defined?(user) && user.respond_to?(:userid)
+      token_service = Api::UserTokenService.new(:base => {:module => "api", :name => "API"})
+      token = token_service.generate_token(user.userid, "api")
+
+      post(
+        "/graphql",
+        :headers => { "HTTP_X_AUTH_TOKEN" => token},
+        :params  => { :query => graphql },
+        :as      => :json
+      )
+    else
+      raise NoUserTokenError
+    end
+  end
+
   def encode_basic_auth_credentials(user, password)
     ActionController::HttpAuthentication::Basic.encode_credentials(user, password)
   end
@@ -88,5 +104,17 @@ module IntegrationMacros
     Tenant.create!(:use_config_for_attributes => false)
     allow(MiqServer).to receive(:my_guid).and_return(server.guid)
     MiqServer.my_server_clear_cache
+  end
+
+  class NoUserTokenError < StandardError
+    DEFAULT_MESSAGE = <<~MESSAGE
+      Couldn't find a user to generate a request token in your spec.
+
+      Use helpers such as `as_user` or define your own user via a variable or memoized helper. See spec/support/integration_macros.rb for more details.
+    MESSAGE
+
+    def initialize(msg = DEFAULT_MESSAGE)
+      super
+    end
   end
 end
