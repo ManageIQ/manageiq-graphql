@@ -7,7 +7,7 @@ module ManageIQ
 
         field :success, !types.Boolean
         field :message, types.String
-        field :taskId, types.ID
+        field :task_id, types.ID
       end
     end
   end

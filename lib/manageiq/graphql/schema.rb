@@ -10,6 +10,8 @@ module ManageIQ
       raise_definition_error true
       enable_preloading
 
+      instrument(:field, FieldNameCamelizer.new)
+
       query Types::Query
       mutation Types::Mutation
 
