@@ -1,27 +1,30 @@
 require "manageiq_helper"
 
 RSpec.describe "Relay specification compliance (integration)" do
-  let(:token_service) { Api::UserTokenService.new(:base => {:module => "api", :name => "API"}) }
-  let(:token) { token_service.generate_token(user.userid, "api") }
-
   describe "Global Object Identification" do
     context "given an object with an ID" do
       as_user do
         before do
           FactoryGirl.create(:vm, :name => "Sooper Special VM")
 
-          post(
-            "/graphql",
-            :headers => { "HTTP_X_AUTH_TOKEN" => token },
-            :params  => { :query => "{ vms { edges { node { id name } } } }" },
-            :as      => :json
-          )
+          execute_graphql <<~QUERY
+            {
+              vms {
+                edges {
+                  node {
+                    id
+                    name
+                  }
+                }
+              }
+            }
+          QUERY
         end
 
         example "the same object can be requeried by its node ID" do
           vm_id = response.parsed_body.dig('data', 'vms', 'edges').first.dig('node', 'id')
 
-          query = <<~QUERY
+          execute_graphql <<~QUERY
             {
               node(id: "#{vm_id}") {
                 id
@@ -31,13 +34,6 @@ RSpec.describe "Relay specification compliance (integration)" do
               }
             }
           QUERY
-
-          post(
-            "/graphql",
-            :headers => { "HTTP_X_AUTH_TOKEN" => token },
-            :params  => { :query => query },
-            :as      => :json
-          )
 
           expected = {
             "data" => {
