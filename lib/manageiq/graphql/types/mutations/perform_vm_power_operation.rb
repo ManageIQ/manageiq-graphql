@@ -24,7 +24,7 @@ module ManageIQ
                 :role        => "ems_operations"
               )
 
-              { :success => true, :message => description.call(args[:vmId]), :taskId => task_id }
+              { :success => true, :message => description.call(args[:vmId]), :task_id => task_id }
             rescue StandardError => error
               { :success => false, :message => error.to_s }
             end
