@@ -25,6 +25,10 @@ module ManageIQ
         app.middleware.use(ManageIQ::GraphQL::RESTAPIProxy)
       end
 
+      initializer "graphql.assets" do |app|
+        app.config.assets.paths << root.join("node_modules").to_s
+      end
+
       def vmdb_plugin?
         true
       end
