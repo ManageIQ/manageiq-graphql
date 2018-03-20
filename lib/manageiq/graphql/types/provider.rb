@@ -21,6 +21,10 @@ module ManageIQ
         field :type, types.String
         field :uid_ems, types.String
         field :updated_on, !DateTime
+
+        connection :hosts, !Host.connection_type, "The hosts associated with this provider" do
+          preload :hosts
+        end
       end
     end
   end

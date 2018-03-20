@@ -3,7 +3,7 @@ require "manageiq_helper"
 RSpec.describe "Provider queries" do
   describe "'providers' field" do
     as_user do
-      before do
+      let!(:provider) do
         FactoryGirl.create(:ems_vmware, :name => "Alice's Provider")
       end
 
@@ -21,6 +21,51 @@ RSpec.describe "Provider queries" do
         QUERY
 
         expect(response.parsed_body).to eq("data" => {"providers" => { "edges" => [{ "node" => {"name" => "Alice's Provider"} }] } })
+      end
+
+      it "will return the hosts of all providers" do
+        FactoryGirl.create(:host_vmware, :name => "Alice's Host", :ext_management_system => provider)
+
+        execute_graphql <<~QUERY
+          {
+            providers {
+              edges {
+                node {
+                  hosts {
+                    edges {
+                      node {
+                        name
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        QUERY
+
+        expected = {
+          "data" => {
+            "providers" => {
+              "edges" => [
+                {
+                  "node" => {
+                    "hosts" => {
+                      "edges" => [
+                        {
+                          "node" => {
+                            "name" => "Alice's Host"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+        expect(response.parsed_body).to eq(expected)
       end
 
       example "providers can be filtered by tag" do
