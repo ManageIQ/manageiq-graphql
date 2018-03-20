@@ -21,6 +21,13 @@ module ManageIQ
           }
         end
 
+        connection :providers, !Provider.connection_type, "List available providers" do
+          resolve ->(_obj, args, _ctx) {
+            providers = ::ExtManagementSystem.all
+            ::Rbac.filtered(providers)
+          }
+        end
+
         connection :services, !Service.connection_type, "List available services" do
           argument :tags, types[types.String]
 
