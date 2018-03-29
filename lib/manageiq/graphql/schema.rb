@@ -22,8 +22,8 @@ module ManageIQ
           Types::VmVmware
         when /Service/
           Types::Service
-        when /Host/
-          Types::Host
+        when /ManageIQ::Providers::Vmware::InfraManager::Host/
+          Types::HostVmware
         end
       }
 

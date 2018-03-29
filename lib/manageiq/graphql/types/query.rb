@@ -8,6 +8,19 @@ module ManageIQ
         field :node,  ::GraphQL::Relay::Node.field
         field :nodes, ::GraphQL::Relay::Node.plural_field
 
+        connection :vmware_hosts, !HostVmware.connection_type, "List available VmWare hosts" do
+          argument :tags, types[types.String]
+
+          resolve ->(_obj, args, _ctx) {
+            hosts = if args[:tags]
+                      ::ManageIQ::Providers::Vmware::InfraManager::Host.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
+                    else
+                      ::ManageIQ::Providers::Vmware::InfraManager::Host.all
+                    end
+            ::Rbac.filtered(hosts)
+          }
+        end
+
         connection :hosts, !Host.connection_type, "List available hosts" do
           argument :tags, types[types.String]
 

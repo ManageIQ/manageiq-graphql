@@ -1,10 +1,9 @@
 module ManageIQ
   module GraphQL
     module Types
-      Host = ::GraphQL::ObjectType.define do
+      Host = ::GraphQL::InterfaceType.define do
         name "Host"
         description "A computer on which virtual machine monitor software is loaded."
-        interfaces [Taggable]
 
         global_id_field :id
         field :database_id,
