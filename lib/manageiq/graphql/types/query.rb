@@ -8,19 +8,6 @@ module ManageIQ
         field :node,  ::GraphQL::Relay::Node.field
         field :nodes, ::GraphQL::Relay::Node.plural_field
 
-        connection :vmware_hosts, !HostVmware.connection_type, "List available VmWare hosts" do
-          argument :tags, types[types.String]
-
-          resolve ->(_obj, args, _ctx) {
-            hosts = if args[:tags]
-                      ::ManageIQ::Providers::Vmware::InfraManager::Host.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
-                    else
-                      ::ManageIQ::Providers::Vmware::InfraManager::Host.all
-                    end
-            ::Rbac.filtered(hosts)
-          }
-        end
-
         connection :hosts, !Host.connection_type, "List available hosts" do
           argument :tags, types[types.String]
 
@@ -34,16 +21,16 @@ module ManageIQ
           }
         end
 
-        connection :vmware_providers, !ProviderVmware.connection_type, "List available VmWare providers" do
+        connection :hosts_vmware, !HostVmware.connection_type, "List available VmWare hosts" do
           argument :tags, types[types.String]
 
           resolve ->(_obj, args, _ctx) {
-            providers = if args[:tags]
-                          ::ManageIQ::Providers::Vmware::InfraManager.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
-                        else
-                          ::ManageIQ::Providers::Vmware::InfraManager.all
-                        end
-            ::Rbac.filtered(providers)
+            hosts = if args[:tags]
+                      ::ManageIQ::Providers::Vmware::InfraManager::Host.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
+                    else
+                      ::ManageIQ::Providers::Vmware::InfraManager::Host.all
+                    end
+            ::Rbac.filtered(hosts)
           }
         end
 
@@ -55,6 +42,19 @@ module ManageIQ
                           ::ExtManagementSystem.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
                         else
                           ::ExtManagementSystem.all
+                        end
+            ::Rbac.filtered(providers)
+          }
+        end
+
+        connection :providers_vmware, !ProviderVmware.connection_type, "List available VmWare providers" do
+          argument :tags, types[types.String]
+
+          resolve ->(_obj, args, _ctx) {
+            providers = if args[:tags]
+                          ::ManageIQ::Providers::Vmware::InfraManager.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
+                        else
+                          ::ManageIQ::Providers::Vmware::InfraManager.all
                         end
             ::Rbac.filtered(providers)
           }
@@ -85,19 +85,6 @@ module ManageIQ
           }
         end
 
-        connection :vmware_vms, !VmVmware.connection_type, "List available Vmware virtual machines" do
-          argument :tags, types[types.String]
-
-          resolve ->(_obj, args, _ctx) {
-            vms = if args[:tags]
-                    ::ManageIQ::Providers::Vmware::InfraManager::Vm.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
-                  else
-                    ::ManageIQ::Providers::Vmware::InfraManager::Vm.all
-                  end
-            ::Rbac.filtered(vms)
-          }
-        end
-
         connection :vms, !Vm.connection_type, "List available virtual machines" do
           argument :tags, types[types.String]
 
@@ -106,6 +93,19 @@ module ManageIQ
                     ::Vm.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
                   else
                     ::Vm.all
+                  end
+            ::Rbac.filtered(vms)
+          }
+        end
+
+        connection :vms_vmware, !VmVmware.connection_type, "List available Vmware virtual machines" do
+          argument :tags, types[types.String]
+
+          resolve ->(_obj, args, _ctx) {
+            vms = if args[:tags]
+                    ::ManageIQ::Providers::Vmware::InfraManager::Vm.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
+                  else
+                    ::ManageIQ::Providers::Vmware::InfraManager::Vm.all
                   end
             ::Rbac.filtered(vms)
           }
