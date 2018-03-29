@@ -34,6 +34,19 @@ module ManageIQ
           }
         end
 
+        connection :vmware_providers, !ProviderVmware.connection_type, "List available VmWare providers" do
+          argument :tags, types[types.String]
+
+          resolve ->(_obj, args, _ctx) {
+            providers = if args[:tags]
+                          ::ManageIQ::Providers::Vmware::InfraManager.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
+                        else
+                          ::ManageIQ::Providers::Vmware::InfraManager.all
+                        end
+            ::Rbac.filtered(providers)
+          }
+        end
+
         connection :providers, !Provider.connection_type, "List available providers" do
           argument :tags, types[types.String]
 
