@@ -18,8 +18,8 @@ module ManageIQ
       resolve_type ->(_abstract_type, obj, _ctx) {
         # TODO: This resolver is incredibly naive and should be refactored.
         case obj.class.name
-        when /Vm/
-          Types::Vm
+        when /ManageIQ::Providers::Vmware::InfraManager::Vm/
+          Types::VmVmware
         when /Service/
           Types::Service
         when /Host/

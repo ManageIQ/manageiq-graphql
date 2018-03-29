@@ -59,6 +59,19 @@ module ManageIQ
           }
         end
 
+        connection :vmware_vms, !VmVmware.connection_type, "List available Vmware virtual machines" do
+          argument :tags, types[types.String]
+
+          resolve ->(_obj, args, _ctx) {
+            vms = if args[:tags]
+                    ::ManageIQ::Providers::Vmware::InfraManager::Vm.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
+                  else
+                    ::ManageIQ::Providers::Vmware::InfraManager::Vm.all
+                  end
+            ::Rbac.filtered(vms)
+          }
+        end
+
         connection :vms, !Vm.connection_type, "List available virtual machines" do
           argument :tags, types[types.String]
 
