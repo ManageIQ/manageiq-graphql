@@ -35,7 +35,6 @@ module ManageIQ
         field :asset_tag, types.String
         field :ipmi_address, types.String
         field :mac_address, types.String
-        field :type, types.String
         field :failover, types.Boolean
         field :ems_ref, types.ID
         field :hyperthreading, types.Boolean

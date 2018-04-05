@@ -18,7 +18,6 @@ module ManageIQ
         field :guid, types.ID
         field :last_refresh_date, DateTime
         field :name, !types.String, "The name of the provider"
-        field :type, types.String
         field :uid_ems, types.String
         field :updated_on, !DateTime
 

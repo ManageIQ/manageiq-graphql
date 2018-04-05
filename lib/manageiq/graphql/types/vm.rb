@@ -25,7 +25,6 @@ module ManageIQ
         field :state_changed_on, DateTime, "The timestamp of when the virtual machine last changed power state"
         field :previous_state, types.String, "The last power state of the virtual machine before changing to its current one"
         field :last_perf_capture_on, DateTime, "The timestamp of when the last metrics collection occurred for this virtual machine"
-        field :type, types.String, "The type of the virtual machine"
         field :ems_ref, types.ID, "The unique identifier of the virtual machine frome the native provider"
         field :cloud, types.Boolean, "Returns true for cloud virtual machines, false for infrastructure virtual machines"
         field :raw_power_state, types.String, "The power state of the virtual machine, as described by the provider"
