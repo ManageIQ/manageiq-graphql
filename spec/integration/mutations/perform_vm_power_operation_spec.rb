@@ -1,7 +1,7 @@
 require "manageiq_helper"
 
 RSpec.describe 'performVmPowerOperation' do
-  let(:vm) { FactoryGirl.create(:vm) }
+  let(:vm) { FactoryGirl.create(:vm_vmware) }
 
   as_user do
     let(:query) do

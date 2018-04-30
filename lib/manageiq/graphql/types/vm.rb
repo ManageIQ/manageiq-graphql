@@ -1,11 +1,9 @@
 module ManageIQ
   module GraphQL
     module Types
-      Vm = ::GraphQL::ObjectType.define do
+      Vm = ::GraphQL::InterfaceType.define do
         name 'Vm'
         description 'A Virtual Machine is a software implementation of a system that functions similar to a physical machine. Virtual machines utilize the hardware infrastructure of a physical host, or a set of physical hosts, to provide a scalable and on-demand method of system provisioning.'
-        implements ::GraphQL::Relay::Node.interface
-        interfaces [Taggable]
 
         global_id_field :id
         field :database_id,

@@ -1,10 +1,9 @@
 module ManageIQ
   module GraphQL
     module Types
-      Provider = ::GraphQL::ObjectType.define do
+      Provider = ::GraphQL::InterfaceType.define do
         name "Provider"
         description "A provider is a server with software to manage multiple virtual machines that reside on multiple hosts"
-        interfaces [Taggable]
 
         global_id_field :id
         field :database_id,

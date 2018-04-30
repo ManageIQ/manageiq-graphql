@@ -18,12 +18,14 @@ module ManageIQ
       resolve_type ->(_abstract_type, obj, _ctx) {
         # TODO: This resolver is incredibly naive and should be refactored.
         case obj.class.name
-        when /Vm/
-          Types::Vm
+        when /ManageIQ::Providers::Vmware::InfraManager::Vm/
+          Types::VmVmware
         when /Service/
           Types::Service
-        when /Host/
-          Types::Host
+        when /ManageIQ::Providers::Vmware::InfraManager::Host/
+          Types::HostVmware
+        when /ManageIQ::Providers::Vmware::InfraManager/
+          Types::ProviderVmware
         end
       }
 
@@ -36,6 +38,8 @@ module ManageIQ
         type_name, item_id = ::GraphQL::Schema::UniqueWithinType.decode(id)
         # TODO: This resolver is incredibly naive and should be refactored.
         model_klass = case type_name
+                      when /Provider/
+                        ::ExtManagementSystem
                       when /Vm/
                         ::Vm
                       when /Service/
