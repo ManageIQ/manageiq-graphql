@@ -21,6 +21,19 @@ module ManageIQ
           }
         end
 
+        connection :networks, !Network.connection_type, "List available networks" do
+          argument :tags, types[types.String]
+
+          resolve ->(_obj, args, _ctx) {
+            networks = if args[:tags]
+                         ::CloudNetwork.find_tagged_with(:all => args[:tags].join(" "), :ns => Classification::DEFAULT_NAMESPACE)
+                       else
+                         ::CloudNetwork.all
+                       end
+            ::Rbac.filtered(networks)
+          }
+        end
+
         connection :providers, !Provider.connection_type, "List available providers" do
           argument :tags, types[types.String]
 
