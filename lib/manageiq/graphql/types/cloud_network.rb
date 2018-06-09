@@ -1,9 +1,9 @@
 module ManageIQ
   module GraphQL
     module Types
-      Network = ::GraphQL::ObjectType.define do
-        name "Network"
-        description "A Network is a virtual Layer 3 network"
+      CloudNetwork = ::GraphQL::ObjectType.define do
+        name "CloudNetwork"
+        description "A Cloud Network is a virtual Layer 3 network for cloud"
         interfaces [Taggable]
 
         global_id_field :id
@@ -13,7 +13,7 @@ module ManageIQ
               :property           => :id,
               :deprecation_reason => "This field may not be included in the ManageIQ Hammer release. Use the global Relay ID ('id') instead."
         field :cidr, types.String
-        field :ems_ref, types.ID, "Provider's unique identifier of network"
+        field :ems_ref, types.ID, "Provider's unique identifier of a cloud network"
         field :enabled, types.Boolean
         field :external_facing, types.Boolean
         field :extra_attributes, types.String

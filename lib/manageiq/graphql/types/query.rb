@@ -21,7 +21,7 @@ module ManageIQ
           }
         end
 
-        connection :networks, !Network.connection_type, "List available networks" do
+        connection :cloudNetworks, !CloudNetwork.connection_type, "List available cloud networks" do
           argument :tags, types[types.String]
 
           resolve ->(_obj, args, _ctx) {
