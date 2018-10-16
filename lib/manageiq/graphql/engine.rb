@@ -29,6 +29,10 @@ module ManageIQ
         app.config.assets.paths << root.join("node_modules").to_s
       end
 
+      def self.plugin_name
+        _('GraphQL')
+      end
+
       def vmdb_plugin?
         true
       end
