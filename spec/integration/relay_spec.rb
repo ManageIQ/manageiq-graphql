@@ -5,7 +5,7 @@ RSpec.describe "Relay specification compliance (integration)" do
     context "given an object with an ID" do
       as_user do
         before do
-          FactoryGirl.create(:vm, :name => "Sooper Special VM")
+          FactoryBot.create(:vm, :name => "Sooper Special VM")
 
           execute_graphql <<~QUERY
             {

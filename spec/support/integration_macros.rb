@@ -37,9 +37,9 @@ module IntegrationMacros
       context "as #{indefinitize(role)}" do
         let(:user) do
           options = user_factory_options.merge(:role => "EvmRole-#{role}")
-          FactoryGirl.create(:user, options)
+          FactoryBot.create(:user, options)
         end
-        let(:server) { FactoryGirl.create(:miq_server) }
+        let(:server) { FactoryBot.create(:miq_server) }
 
         before do
           create_primordials

@@ -4,7 +4,7 @@ RSpec.describe "Provider queries" do
   describe "'providers' field" do
     as_user do
       let!(:provider) do
-        FactoryGirl.create(:ems_vmware, :name => "Alice's Provider")
+        FactoryBot.create(:ems_vmware, :name => "Alice's Provider")
       end
 
       it "will return the specified fields of all providers" do
@@ -24,7 +24,7 @@ RSpec.describe "Provider queries" do
       end
 
       it "will return the hosts of all providers" do
-        FactoryGirl.create(:host_vmware, :name => "Alice's Host", :ext_management_system => provider)
+        FactoryBot.create(:host_vmware, :name => "Alice's Host", :ext_management_system => provider)
 
         execute_graphql <<~QUERY
           {
@@ -69,7 +69,7 @@ RSpec.describe "Provider queries" do
       end
 
       example "providers can be filtered by tag" do
-        FactoryGirl.create(:ems_vmware, :name => "Bob's Provider").tap do |ems|
+        FactoryBot.create(:ems_vmware, :name => "Bob's Provider").tap do |ems|
           ems.tag_add("<3<3<3", :ns => "/managed")
         end
 
