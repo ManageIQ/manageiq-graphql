@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "codemirror": "~5.40",
     "graphiql": "^0.11.11",
     "react": "^16.2.0"
   },
