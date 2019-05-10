@@ -2,7 +2,7 @@ require "manageiq_helper"
 
 RSpec.describe "Tagging" do
   describe "addTags mutation" do
-    let(:taggable) { FactoryGirl.create(:vm, :name => "Sooper Cool VM") }
+    let(:taggable) { FactoryBot.create(:vm, :name => "Sooper Cool VM") }
 
     let(:mutation) do
       <<~MUTATION
@@ -53,7 +53,7 @@ RSpec.describe "Tagging" do
     end
 
     let(:taggable) do
-      FactoryGirl.create(:vm, :name => "Sooper Cool VM", :tags => tags)
+      FactoryBot.create(:vm, :name => "Sooper Cool VM", :tags => tags)
     end
 
     let(:mutation) do
