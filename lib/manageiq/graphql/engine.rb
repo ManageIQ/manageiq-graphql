@@ -33,7 +33,7 @@ module ManageIQ
         _('GraphQL')
       end
 
-      def vmdb_plugin?
+      def self.vmdb_plugin?
         true
       end
     end
