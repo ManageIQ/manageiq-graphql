@@ -1,11 +1,11 @@
 # ManageIQ::GraphQL
 
 [![Gem Version](https://badge.fury.io/rb/manageiq-graphql.svg)](http://badge.fury.io/rb/manageiq-graphql)
-[![Build Status](https://travis-ci.org/ManageIQ/manageiq-graphql.svg?branch=master)](https://travis-ci.org/ManageIQ/manageiq-graphql)
+[![Build Status](https://travis-ci.org/ManageIQ/manageiq-graphql.svg?branch=ivanchuk)](https://travis-ci.org/ManageIQ/manageiq-graphql)
 [![Code Climate](https://codeclimate.com/github/ManageIQ/manageiq-graphql.svg)](https://codeclimate.com/github/ManageIQ/manageiq-graphql)
 [![Test Coverage](https://codeclimate.com/github/ManageIQ/manageiq-graphql/badges/coverage.svg)](https://codeclimate.com/github/ManageIQ/manageiq-graphql/coverage)
 [![Dependency Status](https://gemnasium.com/ManageIQ/manageiq-graphql.svg)](https://gemnasium.com/ManageIQ/manageiq-graphql)
-[![Security](https://hakiri.io/github/ManageIQ/manageiq-graphql/master.svg)](https://hakiri.io/github/ManageIQ/manageiq-graphql/master)
+[![Security](https://hakiri.io/github/ManageIQ/manageiq-graphql/ivanchuk.svg)](https://hakiri.io/github/ManageIQ/manageiq-graphql/ivanchuk)
 [![Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ManageIQ/api)
 [![Translate](https://img.shields.io/badge/translate-zanata-blue.svg)](https://translate.zanata.org/zanata/project/view/manageiq-graphql)
 
