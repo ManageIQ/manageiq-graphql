@@ -7,7 +7,6 @@
 [![Dependency Status](https://gemnasium.com/ManageIQ/manageiq-graphql.svg)](https://gemnasium.com/ManageIQ/manageiq-graphql)
 [![Security](https://hakiri.io/github/ManageIQ/manageiq-graphql/master.svg)](https://hakiri.io/github/ManageIQ/manageiq-graphql/master)
 [![Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ManageIQ/api)
-[![Translate](https://img.shields.io/badge/translate-zanata-blue.svg)](https://translate.zanata.org/zanata/project/view/manageiq-graphql)
 
 The [GraphQL](http://graphql.org/) API for [ManageIQ](https://github.com/ManageIQ/manageiq)
 
