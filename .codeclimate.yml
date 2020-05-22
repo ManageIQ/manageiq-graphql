@@ -1,4 +1,3 @@
----
 version: '2'
 checks:
   similar-code:
@@ -32,18 +31,19 @@ engines:
     enabled: false
   markdownlint:
     enabled: false
-  rubocop:
-    enabled: true
-    config: ".rubocop_cc.yml"
-    channel: rubocop-0-69
 prepare:
   fetch:
-  - url: https://raw.githubusercontent.com/ManageIQ/guides/master/.rubocop_base.yml
+  - url: https://raw.githubusercontent.com/ManageIQ/manageiq-style/master/.rubocop_base.yml
     path: ".rubocop_base.yml"
-  - url: https://raw.githubusercontent.com/ManageIQ/guides/master/.rubocop_cc_base.yml
+  - url: https://raw.githubusercontent.com/ManageIQ/manageiq-style/master/.rubocop_cc_base.yml
     path: ".rubocop_cc_base.yml"
 ratings:
   paths:
   - Gemfile.lock
   - "**.rake"
   - "**.rb"
+plugins:
+  rubocop:
+    enabled: true
+    config: ".rubocop_cc.yml"
+    channel: rubocop-0-82
