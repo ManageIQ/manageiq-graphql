@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency("graphql-preload", "~> 1.0")
 
   s.add_development_dependency("codeclimate-test-reporter", "~> 1.0.0")
+  s.add_development_dependency("manageiq-style")
   s.add_development_dependency("rspec-rails", "~> 3.7")
   s.add_development_dependency("simplecov")
   s.add_development_dependency("spring")
