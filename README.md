@@ -1,11 +1,11 @@
 # ManageIQ::GraphQL
 
 [![Gem Version](https://badge.fury.io/rb/manageiq-graphql.svg)](http://badge.fury.io/rb/manageiq-graphql)
-[![Build Status](https://travis-ci.org/ManageIQ/manageiq-graphql.svg?branch=master)](https://travis-ci.org/ManageIQ/manageiq-graphql)
+[![Build Status](https://travis-ci.org/ManageIQ/manageiq-graphql.svg?branch=kasparov)](https://travis-ci.org/ManageIQ/manageiq-graphql)
 [![Code Climate](https://codeclimate.com/github/ManageIQ/manageiq-graphql.svg)](https://codeclimate.com/github/ManageIQ/manageiq-graphql)
 [![Test Coverage](https://codeclimate.com/github/ManageIQ/manageiq-graphql/badges/coverage.svg)](https://codeclimate.com/github/ManageIQ/manageiq-graphql/coverage)
 [![Dependency Status](https://gemnasium.com/ManageIQ/manageiq-graphql.svg)](https://gemnasium.com/ManageIQ/manageiq-graphql)
-[![Security](https://hakiri.io/github/ManageIQ/manageiq-graphql/master.svg)](https://hakiri.io/github/ManageIQ/manageiq-graphql/master)
+[![Security](https://hakiri.io/github/ManageIQ/manageiq-graphql/kasparov.svg)](https://hakiri.io/github/ManageIQ/manageiq-graphql/kasparov)
 [![Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ManageIQ/api)
 
 The [GraphQL](http://graphql.org/) API for [ManageIQ](https://github.com/ManageIQ/manageiq)
