@@ -1,4 +1,4 @@
-GlobalVars:
+Style/GlobalVars:
   AllowedVariables:
   - $api_log
 Style/Lambda:
