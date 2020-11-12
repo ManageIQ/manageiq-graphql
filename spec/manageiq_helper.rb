@@ -9,6 +9,8 @@ require File.expand_path("../manageiq/config/environment", __FILE__)
 
 # Configure rspec-rails
 require 'rspec/rails'
+require 'rspec/mocks'
+
 RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
