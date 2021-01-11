@@ -101,7 +101,7 @@ module IntegrationMacros
   # Creates the minimum required records to have a functional
   # integration test
   def create_primordials
-    Tenant.create!(:use_config_for_attributes => false)
+    Tenant.root_tenant || Tenant.create!(:use_config_for_attributes => false)
     allow(MiqServer).to receive(:my_guid).and_return(server.guid)
     MiqServer.my_server_clear_cache
   end
