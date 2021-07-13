@@ -1,7 +1,7 @@
 # ManageIQ::GraphQL
 
 [![Gem Version](https://badge.fury.io/rb/manageiq-graphql.svg)](http://badge.fury.io/rb/manageiq-graphql)
-[![Build Status](https://travis-ci.org/ManageIQ/manageiq-graphql.svg?branch=master)](https://travis-ci.org/ManageIQ/manageiq-graphql)
+[![Build Status](https://travis-ci.com/ManageIQ/manageiq-graphql.svg?branch=master)](https://travis-ci.com/ManageIQ/manageiq-graphql)
 [![Code Climate](https://codeclimate.com/github/ManageIQ/manageiq-graphql.svg)](https://codeclimate.com/github/ManageIQ/manageiq-graphql)
 [![Test Coverage](https://codeclimate.com/github/ManageIQ/manageiq-graphql/badges/coverage.svg)](https://codeclimate.com/github/ManageIQ/manageiq-graphql/coverage)
 [![Dependency Status](https://gemnasium.com/ManageIQ/manageiq-graphql.svg)](https://gemnasium.com/ManageIQ/manageiq-graphql)
