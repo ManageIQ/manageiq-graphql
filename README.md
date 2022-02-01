@@ -5,7 +5,6 @@
 [![Code Climate](https://codeclimate.com/github/ManageIQ/manageiq-graphql.svg)](https://codeclimate.com/github/ManageIQ/manageiq-graphql)
 [![Test Coverage](https://codeclimate.com/github/ManageIQ/manageiq-graphql/badges/coverage.svg)](https://codeclimate.com/github/ManageIQ/manageiq-graphql/coverage)
 [![Dependency Status](https://gemnasium.com/ManageIQ/manageiq-graphql.svg)](https://gemnasium.com/ManageIQ/manageiq-graphql)
-[![Security](https://hakiri.io/github/ManageIQ/manageiq-graphql/master.svg)](https://hakiri.io/github/ManageIQ/manageiq-graphql/master)
 [![Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ManageIQ/api)
 
 The [GraphQL](http://graphql.org/) API for [ManageIQ](https://github.com/ManageIQ/manageiq)
